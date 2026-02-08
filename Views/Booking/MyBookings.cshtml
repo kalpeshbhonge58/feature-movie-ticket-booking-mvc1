@@ -1,0 +1,52 @@
+@model IEnumerable<CineBookerEnterprise.Models.ViewModels.BookingHistoryViewModel>
+
+@{
+    ViewData["Title"] = "My Bookings";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">My Booking History</h1>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Movie</th>
+                        <th>Seats</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.BookingTime.ToString("g")</td>
+                            <td>@booking.MovieTitle</td>
+                            <td>@booking.Seats.Count (@string.Join(", ", booking.Seats))</td>
+                            <td>@booking.TotalPrice.ToString("C")</td>
+                            <td>
+                                <span class="badge @(booking.Status == "Confirmed" ? "bg-success" : "bg-warning")">
+                                    @booking.Status
+                                </span>
+                            </td>
+                            <td>
+                                <a asp-action="Confirmation" asp-route-id="@booking.Id" class="btn btn-sm btn-info">View Ticket</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            You haven't made any bookings yet. <a asp-controller="Home" asp-action="Index">Browse movies</a> to start booking!
+        </div>
+    }
+</div>

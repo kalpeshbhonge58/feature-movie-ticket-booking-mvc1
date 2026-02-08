@@ -1,0 +1,25 @@
+@model IEnumerable<CineBookerEnterprise.Models.ViewModels.MovieListItemViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <h1 class="text-center mb-5">Now Showing</h1>
+    <div class="row">
+        @foreach (var movie in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@movie.PosterUrl" class="card-img-top" alt="@movie.Title" style="height: 400px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@movie.Title</h5>
+                        <p class="card-text text-muted">@movie.Genre | @movie.DurationMinutes mins</p>
+                        <p class="card-text text-truncate">@movie.Description</p>
+                        <a asp-controller="Movies" asp-action="Details" asp-route-id="@movie.Id" class="btn btn-primary w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

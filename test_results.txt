@@ -1,0 +1,5 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/app/Models/ViewModels/MovieViewModels.cs(1,29): error CS0234: The type or namespace name 'DisplayName' does not exist in the namespace 'System.ComponentModel' (are you missing an assembly reference?) [/app/CineBookerEnterprise.csproj]
+/app/Controllers/BookingController.cs(14,38): error CS0246: The type or namespace name 'ApplicationUser' could not be found (are you missing a using directive or an assembly reference?) [/app/CineBookerEnterprise.csproj]
+/app/Controllers/BookingController.cs(16,104): error CS0246: The type or namespace name 'ApplicationUser' could not be found (are you missing a using directive or an assembly reference?) [/app/CineBookerEnterprise.csproj]

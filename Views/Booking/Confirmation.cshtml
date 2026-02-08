@@ -1,0 +1,32 @@
+@model CineBookerEnterprise.Models.ViewModels.BookingDetailsViewModel
+
+@{
+    ViewData["Title"] = "Booking Confirmation";
+}
+
+<div class="container mt-5">
+    <div class="card shadow border-success mx-auto" style="max-width: 600px;">
+        <div class="card-body text-center p-5">
+            <div class="display-1 text-success mb-4">
+                <i class="bi bi-check-circle-fill"></i>
+            </div>
+            <h1 class="card-title text-success">Booking Confirmed!</h1>
+            <p class="lead">Thank you for booking with CineBooker. Your transaction was successful.</p>
+            <hr>
+            <div class="text-start">
+                <p><strong>Booking ID:</strong> @Model.Id</p>
+                <p><strong>Movie:</strong> @Model.MovieTitle</p>
+                <p><strong>Theater:</strong> @Model.TheaterName</p>
+                <p><strong>Screen:</strong> @Model.ScreenName</p>
+                <p><strong>Show Time:</strong> @Model.ShowTime.ToString("f")</p>
+                <p><strong>Seats:</strong> @string.Join(", ", Model.Seats)</p>
+                <p><strong>Total Amount:</strong> @Model.TotalPrice.ToString("C")</p>
+                <p><strong>Transaction ID:</strong> @Model.TransactionId</p>
+            </div>
+            <div class="mt-4">
+                <a asp-action="MyBookings" class="btn btn-primary">View My Bookings</a>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
